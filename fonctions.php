@@ -41,10 +41,9 @@ function emailExiste($pdo, $email) {
 // ---------------------------------------
 // Inscrire un utilisateur
 // ---------------------------------------
-function creerUtilisateur($pdo, $nom, $email, $adresse,$passwordHash) {
-    $role_id = 2;
-
-    $stmt = $pdo->prepare("INSERT INTO users (nom, email, adresse, password, role_id) VALUES (?, ?, ?, ?, ?)");
+function creerUtilisateur($pdo, $nom, $email, $adresse, $passwordHash, $role_id = 2) {
+    $sql = "INSERT INTO users (nom, email, adresse, password, role_id) VALUES (?, ?, ?, ?, ?)";
+    $stmt = $pdo->prepare($sql);
     return $stmt->execute([$nom, $email, $adresse, $passwordHash, $role_id]);
 }
 
@@ -101,5 +100,26 @@ function recupererTousLesUtilisateurs($pdo) {
     $stmt = $pdo->query($sql);
     return $stmt->fetchAll();
 }
+
+
+// ---------------------------------------
+// Récupérer un utilisateur par ID
+// ---------------------------------------
+function getUserById($pdo, $id) {
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+    $stmt->execute([$id]);
+    return $stmt->fetch();
+}
+
+
+// ---------------------------------------
+// Mettre à jour un utilisateur (Admin)
+// ---------------------------------------
+function updateUtilisateur($pdo, $id, $nom, $email, $adresse, $role_id) {
+    $sql = "UPDATE users SET nom = ?, email = ?, adresse = ?, role_id = ? WHERE id = ?";
+    $stmt = $pdo->prepare($sql);
+    return $stmt->execute([$nom, $email, $adresse, $role_id, $id]);
+}
+
 
 ?>

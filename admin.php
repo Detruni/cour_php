@@ -55,7 +55,7 @@ $users = recupererTousLesUtilisateurs($pdo);
 
     <h3>Liste des utilisateurs</h3>
 
-    <a href="#" class="btn-green">Ajouter un utilisateur (Bientôt)</a>
+    <a href="admin_add.php" class="btn-green">Ajouter un utilisateur</a>
 
     <table>
         <thead>
@@ -88,7 +88,7 @@ $users = recupererTousLesUtilisateurs($pdo);
                             <button type="submit" class="btn-red">Supprimer</button>
                         </form>
                         
-                        <a href="#">Modifier</a>
+                        <a href="admin_edit.php?id=<?php echo $user['id']; ?>">Modifier</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
