@@ -89,4 +89,17 @@ function supprimerUtilisateur($pdo, $id) {
     return $stmt->execute([$id]);
 }
 
+
+// ---------------------------------------
+// Récupérer TOUS les utilisateurs avec leur nom de rôle
+// ---------------------------------------
+function recupererTousLesUtilisateurs($pdo) {
+    $sql = "SELECT users.*, roles.role_name
+            FROM users
+            JOIN roles ON users.role_id = roles.id
+            ORDER BY users.id ASC";
+    $stmt = $pdo->query($sql);
+    return $stmt->fetchAll();
+}
+
 ?>
