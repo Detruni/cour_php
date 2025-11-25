@@ -80,4 +80,13 @@ function requireLogin() {
     }
 }
 
+
+// ---------------------------------------
+// Supprimer un utilisateur par son ID
+// ---------------------------------------
+function supprimerUtilisateur($pdo, $id) {
+    $stmt = $pdo->prepare("DELETE FROM users WHERE id = ?");
+    return $stmt->execute([$id]);
+}
+
 ?>
