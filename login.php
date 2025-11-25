@@ -10,24 +10,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = trim($_POST['password']);
 
     if ($email === "" || $password === "") {
-        die("Veuillez remplir tous les champs.");
+        $error = "Veuillez remplir tous les champs.";
+    } else {
+        $user = getUserByEmail($pdo, $email);
+
+        // On vérifie si l'utilisateur existe et si le mot de passe est bon
+        if ($user && password_verify($password, $user['password'])) {
+            
+            // 1. On remplit la session
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_nom'] = $user['nom'];
+            $_SESSION['user_role'] = $user['role_id']; // On stocke le rôle (1 ou 2)
+
+            // 2. Redirection selon le rôle
+            if ($user['role_id'] == 1) {
+                // C'est un admin
+                header("Location: admin.php");
+            } else {
+                // C'est un utilisateur normal
+                header("Location: profil.php");
+            }
+            exit;
+
+        } else {
+            $error = "Email ou mot de passe incorrect.";
+        }
     }
-
-    $user = getUserByEmail($pdo, $email);
-
-    if (!$user) {
-        die("Email ou mot de passe incorrect.");
-    }
-
-    if (!password_verify($password, $user['password'])) {
-        die("Email ou mot de passe incorrect.");
-    }
-
-    $_SESSION['user_id'] = $user['id'];
-    $_SESSION['user_nom'] = $user['nom'];
-
-    header("Location: tableau.php");
-    exit;
 }
 ?>
 
@@ -37,15 +45,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <h2>Connexion</h2>
 
+<?php if (isset($error)): ?>
+    <p style="color:red;"><?php echo $error; ?></p>
+<?php endif; ?>
+
 <form method="POST">
-    Email :<br>
+    <label>Email :</label><br>
     <input type="email" name="email" required><br><br>
 
-    Mot de passe :<br>
+    <label>Mot de passe :</label><br>
     <input type="password" name="password" required><br><br>
 
     <button type="submit">Se connecter</button>
 </form>
+
+<p>Pas encore de compte ? <a href="register.php">S'inscrire</a></p>
 
 </body>
 </html>
