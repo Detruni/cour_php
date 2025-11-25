@@ -41,9 +41,11 @@ function emailExiste($pdo, $email) {
 // ---------------------------------------
 // Inscrire un utilisateur
 // ---------------------------------------
-function creerUtilisateur($pdo, $nom, $email, $passwordHash) {
-    $stmt = $pdo->prepare("INSERT INTO users (nom, email, password) VALUES (?, ?, ?)");
-    return $stmt->execute([$nom, $email, $passwordHash]);
+function creerUtilisateur($pdo, $nom, $email, $adresse,$passwordHash) {
+    $role_id = 2;
+
+    $stmt = $pdo->prepare("INSERT INTO users (nom, email, adresse, password, role_id) VALUES (?, ?, ?, ?, ?)");
+    return $stmt->execute([$nom, $email, $adresse, $passwordHash, $role_id]);
 }
 
 
