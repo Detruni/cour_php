@@ -60,42 +60,46 @@ $users = recupererTousLesUtilisateurs($pdo);
 
     <a href="admin_add.php" class="btn-green">Ajouter un utilisateur</a>
 
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nom</th>
-                <th>Email</th>
-                <th>Rôle</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($users as $user): ?>
+    <div class="table-responsive">
+        <table>
+            <thead>
                 <tr>
-                    <td><?php echo htmlspecialchars($user['id']); ?></td>
-                    <td><?php echo htmlspecialchars($user['nom']); ?></td>
-                    <td><?php echo htmlspecialchars($user['email']); ?></td>
-                    
-                    <td>
-                        <?php if ($user['role_name'] === 'admin'): ?>
-                            <strong>Admin</strong>
-                        <?php else: ?>
-                            Utilisateur
-                        <?php endif; ?>
-                    </td>
-
-                    <td>
-                        <form method="POST" style="display:inline;" onsubmit="return confirm('Confirmer la suppression de cet utilisateur ?');">
-                            <input type="hidden" name="supprimer_id" value="<?php echo $user['id']; ?>">
-                            <button type="submit" class="btn-red">Supprimer</button>
-                        </form>
-                        
-                        <a href="admin_edit.php?id=<?php echo $user['id']; ?>">Modifier</a>
-                    </td>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Rôle</th>
+                    <th>Actions</th>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php foreach ($users as $user): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($user['id']); ?></td>
+                        <td><?php echo htmlspecialchars($user['nom']); ?></td>
+                        <td><?php echo htmlspecialchars($user['email']); ?></td>
+                        
+                        <td>
+                            <?php if ($user['role_name'] === 'admin'): ?>
+                                <strong>Admin</strong>
+                            <?php else: ?>
+                                Utilisateur
+                            <?php endif; ?>
+                        </td>
+
+                        <td>
+                            <div class="action-buttons">
+                                <form method="POST" style="display:inline;" onsubmit="return confirm('Confirmer la suppression de cet utilisateur ?');">
+                                    <input type="hidden" name="supprimer_id" value="<?php echo $user['id']; ?>">
+                                    <button type="submit" class="btn-red">Supprimer</button>
+                                </form>
+                                
+                                <a href="admin_edit.php?id=<?php echo $user['id']; ?>">Modifier</a>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
