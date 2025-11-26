@@ -43,28 +43,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajouter un utilisateur</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <h2>Ajouter un utilisateur (Admin)</h2>
-    
-    <?php if (isset($error)) echo "<p style='color:red'>$error</p>"; ?>
-
-    <form method="POST">
-        Nom : <br><input type="text" name="nom" required><br><br>
-        Email : <br><input type="email" name="email" required><br><br>
-        Adresse : <br><input type="text" name="adresse" required><br><br>
-        Mot de passe : <br><input type="password" name="password" required><br><br>
+    <div class="container">
+        <h2>Ajouter un utilisateur (Admin)</h2>
         
-        Rôle : <br>
-        <select name="role">
-            <option value="2">Utilisateur</option>
-            <option value="1">Administrateur</option>
-        </select><br><br>
+        <?php if (isset($error)) echo "<p style='color:red'>$error</p>"; ?>
 
-        <button type="submit">Ajouter</button>
-        <a href="admin.php">Annuler</a>
-    </form>
+        <form method="POST">
+            Nom : <br><input type="text" name="nom" required><br><br>
+            Email : <br><input type="email" name="email" required><br><br>
+            Adresse : <br><input type="text" name="adresse" required><br><br>
+            Mot de passe : <br><input type="password" name="password" required><br><br>
+            
+            Rôle : <br>
+            <select name="role">
+                <option value="2">Utilisateur</option>
+                <option value="1">Administrateur</option>
+            </select><br><br>
+
+            <button type="submit">Ajouter</button>
+            <a href="admin.php">Annuler</a>
+        </form>
+    </div>
 </body>
 </html>

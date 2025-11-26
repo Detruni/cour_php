@@ -46,32 +46,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier un utilisateur</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <h2>Modifier l'utilisateur : <?php echo htmlspecialchars($user['nom']); ?></h2>
-    
-    <?php if (isset($error)) echo "<p style='color:red'>$error</p>"; ?>
+    <div class="container">
+        <h2>Modifier l'utilisateur : <?php echo htmlspecialchars($user['nom']); ?></h2>
+        
+        <?php if (isset($error)) echo "<p style='color:red'>$error</p>"; ?>
 
-    <form method="POST">
-        Nom : <br>
-        <input type="text" name="nom" value="<?php echo htmlspecialchars($user['nom']); ?>" required><br><br>
-        
-        Email : <br>
-        <input type="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required><br><br>
-        
-        Adresse : <br>
-        <input type="text" name="adresse" value="<?php echo htmlspecialchars($user['adresse']); ?>" required><br><br>
-        
-        Rôle : <br>
-        <select name="role">
-            <option value="2" <?php if ($user['role_id'] == 2) echo 'selected'; ?>>Utilisateur</option>
-            <option value="1" <?php if ($user['role_id'] == 1) echo 'selected'; ?>>Administrateur</option>
-        </select><br><br>
+        <form method="POST">
+            Nom : <br>
+            <input type="text" name="nom" value="<?php echo htmlspecialchars($user['nom']); ?>" required><br><br>
+            
+            Email : <br>
+            <input type="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required><br><br>
+            
+            Adresse : <br>
+            <input type="text" name="adresse" value="<?php echo htmlspecialchars($user['adresse']); ?>" required><br><br>
+            
+            Rôle : <br>
+            <select name="role">
+                <option value="2" <?php if ($user['role_id'] == 2) echo 'selected'; ?>>Utilisateur</option>
+                <option value="1" <?php if ($user['role_id'] == 1) echo 'selected'; ?>>Administrateur</option>
+            </select><br><br>
 
-        <button type="submit">Enregistrer les modifications</button>
-        <a href="admin.php">Annuler</a>
-    </form>
+            <button type="submit">Enregistrer les modifications</button>
+            <a href="admin.php">Annuler</a>
+        </form>
+    </div>
 </body>
 </html>
