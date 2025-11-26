@@ -12,6 +12,7 @@ if ($_SESSION['user_role'] != 1) {
 $pdo = getDB();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Récupération des données du formulaire
     $nom = trim($_POST['nom']);
     $email = trim($_POST['email']);
     $adresse = trim($_POST['adresse']);

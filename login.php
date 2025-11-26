@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($email === "" || $password === "") {
         $error = "Veuillez remplir tous les champs.";
     } else {
+        // Récupération de l'utilisateur par son email
         $user = getUserByEmail($pdo, $email);
 
         // On vérifie si l'utilisateur existe et si le mot de passe est bon
@@ -24,10 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // 2. Redirection selon le rôle
             if ($user['role_id'] == 1) {
-                // C'est un admin
                 header("Location: admin.php");
             } else {
-                // C'est un utilisateur normal
                 header("Location: profil.php");
             }
             exit;

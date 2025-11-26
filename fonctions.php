@@ -10,14 +10,15 @@ function getDB() {
     $password = "";
 
     try {
+        // Création de l'objet PDO avec gestion des erreurs et encodage UTF8
         return new PDO(
             "mysql:host=$host;dbname=$dbname;port=3306;charset=utf8",
             $username,
             $password,
             [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                PDO::ATTR_EMULATE_PREPARES => false
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Active les exceptions en cas d'erreur SQL
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, // Récupère les données sous forme de tableau associatif
+                PDO::ATTR_EMULATE_PREPARES => false // Sécurité : utilise les vraies requêtes préparées
             ]
         );
     } catch (PDOException $e) {
@@ -31,8 +32,10 @@ function getDB() {
 // Vérifie si un email existe déjà
 // ---------------------------------------
 function emailExiste($pdo, $email) {
+    // Requête préparée pour éviter les injections SQL
     $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
     $stmt->execute([$email]);
+    // Renvoie vrai si on trouve au moins une ligne
     return $stmt->rowCount() > 0;
 }
 
@@ -93,6 +96,7 @@ function supprimerUtilisateur($pdo, $id) {
 // Récupérer TOUS les utilisateurs avec leur nom de rôle
 // ---------------------------------------
 function recupererTousLesUtilisateurs($pdo) {
+    // JOIN permet de récupérer le nom du rôle (admin/user) depuis la table roles
     $sql = "SELECT users.*, roles.role_name
             FROM users
             JOIN roles ON users.role_id = roles.id

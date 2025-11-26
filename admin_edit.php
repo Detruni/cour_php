@@ -10,7 +10,7 @@ if ($_SESSION['user_role'] != 1) {
 
 $pdo = getDB();
 
-// 1. Vérifier si on a un ID dans l'URL (ex: admin_edit.php?id=5)
+// Vérifier si on a un ID dans l'URL (ex: admin_edit.php?id=5)
 if (!isset($_GET['id'])) {
     die("ID utilisateur manquant.");
 }
@@ -22,7 +22,7 @@ if (!$user) {
     die("Utilisateur introuvable.");
 }
 
-// 2. Traitement du formulaire de modification
+// Traitement du formulaire de modification
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nom = trim($_POST['nom']);
     $email = trim($_POST['email']);

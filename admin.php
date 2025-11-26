@@ -4,6 +4,7 @@ require "fonctions.php";
 
 requireLogin();
 
+// Sécurité : Vérification stricte du rôle Admin (id = 1)
 if ($_SESSION['user_role'] != 1) {
     header("Location: profil.php");
     exit;
@@ -27,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['supprimer_id'])) {
     }
 }
 
+// Récupération de tous les utilisateurs pour le tableau
 $users = recupererTousLesUtilisateurs($pdo);
 
 ?>

@@ -2,13 +2,15 @@
 session_start();
 require "fonctions.php";
 
+// Sécurité : On rejette si non connecté
 requireLogin();
 
 $pdo = getDB();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['supprimer_compte'])) {
+    // Suppression basée sur l'ID de session (Sécurité : on ne supprime que soi-même)
     if (supprimerUtilisateur($pdo, $_SESSION['user_id'])) {
-        session_destroy();
+        session_destroy(); // On détruit la session après suppression
         header("Location: register.php");
         exit;
     } else {
@@ -16,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['supprimer_compte'])) 
     }
 }
 
+// On récupère les infos fraîches depuis la BDD
 $stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
 $stmt->execute([$_SESSION['user_id']]);
 $user = $stmt->fetch();
