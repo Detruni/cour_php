@@ -40,27 +40,52 @@ if (!$user) {
 </head>
 <body>
 
-<h1>Bonjour, <?php echo htmlspecialchars($user['nom']); ?> !</h1>
+    <div class="container profile-card">
+        
+        <div class="profile-avatar">
+            <?php echo strtoupper(substr($user['nom'], 0, 1)); ?>
+        </div>
 
-<?php if (isset($error)) { echo "<p style='color:red'>$error</p>"; } ?>
+        <h1>Mon Profil</h1>
 
-<h3>Mes informations</h3>
-<p>
-    <strong>Email :</strong> <?php echo htmlspecialchars($user['email']); ?><br>
-    <strong>Adresse :</strong> <?php echo htmlspecialchars($user['adresse']); ?><br>
-    <strong>Role :</strong> <?php echo ($user['role_id'] == 1) ? 'Administrateur' : 'Utilisateur'; ?>
-</p>
+        <?php if (isset($error)) { echo "<p class='error'>$error</p>"; } ?>
 
-<hr>
+        <div class="profile-info-group">
+            <span class="profile-label">Nom</span>
+            <span class="profile-value"><?php echo htmlspecialchars($user['nom']); ?></span>
+        </div>
 
-<form method="post" onsubmit="return confirm('Etes-vous sur de vouloir supprimer votre compte définitivement ?');">
-    <button type="submit" name="supprimer_compte" style="background-color: red; color: white;">
-        Supprimer mon compte
-    </button>
-</form>
+        <div class="profile-info-group">
+            <span class="profile-label">Email</span>
+            <span class="profile-value"><?php echo htmlspecialchars($user['email']); ?></span>
+        </div>
 
-<br>
-<a href="logout.php">Se déconnecter</a>
-    
+        <div class="profile-info-group">
+            <span class="profile-label">Adresse</span>
+            <span class="profile-value"><?php echo htmlspecialchars($user['adresse']); ?></span>
+        </div>
+
+        <div class="profile-info-group">
+            <span class="profile-label">Rôle</span>
+            <span class="profile-value">
+                <?php echo ($user['role_id'] == 1) ? 'Administrateur' : 'Utilisateur'; ?>
+            </span>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 20px 0;">
+
+        <div class="action-buttons" style="justify-content: center; flex-direction: column;">
+            
+            <a href="logout.php" style="margin-bottom: 15px;">Se déconnecter</a>
+
+            <form method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer votre compte définitivement ?');" style="width: 100%;">
+                <button type="submit" name="supprimer_compte" class="btn-delete" style="width: 100%;">
+                    Supprimer mon compte
+                </button>
+            </form>
+            
+        </div>
+    </div>
+
 </body>
 </html>
