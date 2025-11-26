@@ -3,6 +3,16 @@
 Ce projet est une application web complète de gestion d'utilisateurs développée en **PHP natif (procédural)**. 
 Il a été réalisé dans un but pédagogique pour maîtriser les interactions avec une base de données MySQL, la gestion des sessions et la sécurisation des formulaires, sans l'utilisation de frameworks ou de Programmation Orientée Objet (POO).
 
+L'interface a été entièrement stylisée avec une identité visuelle moderne (**Dark Mode**, dégradés) et est totalement **Responsive** (adaptée mobiles et tablettes).
+
+## 📸 Aperçu
+
+### Page de Connexion
+![Page de Connexion](assets/img/login.png.png)
+
+### Tableau de Bord (Responsive)
+![Tableau de Bord](assets/img/dashboard.png.png)
+
 ## 📋 Fonctionnalités
 
 L'application gère deux types de rôles : **Utilisateur** et **Administrateur**.
