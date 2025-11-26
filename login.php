@@ -40,6 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html>
+<head>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
 <body>
 
 <h2>Connexion</h2>

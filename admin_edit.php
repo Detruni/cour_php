@@ -47,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Modifier un utilisateur</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <h2>Modifier l'utilisateur : <?php echo htmlspecialchars($user['nom']); ?></h2>

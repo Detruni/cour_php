@@ -44,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Ajouter un utilisateur</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <h2>Ajouter un utilisateur (Admin)</h2>

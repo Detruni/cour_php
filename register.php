@@ -54,6 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8"> 
     <title>Inscription</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 <h2>Inscription</h2>
@@ -74,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <label>Confirmer le mot de passe :</label><br>
     <input type="password" name="confirm_password" required><br><br>
     
-    <button type="submit">S'inscrire</button>
+    <button type="submit">S'inscrire</button><br>
 
     <p>Déjà un compte ? <a href="login.php">Se connecter</a></p>
 </form>
