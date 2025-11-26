@@ -8,10 +8,10 @@ L'interface a été entièrement stylisée avec une identité visuelle moderne (
 ## 📸 Aperçu
 
 ### Page de Connexion
-![Page de Connexion](assets/img/login.png.png)
+![Page de Connexion](assets/img/login.png)
 
 ### Tableau de Bord (Responsive)
-![Tableau de Bord](assets/img/dashboard.png.png)
+![Tableau de Bord](assets/img/dashboard.png)
 
 ## 📋 Fonctionnalités
 
