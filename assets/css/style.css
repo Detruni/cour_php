@@ -354,7 +354,8 @@ header {
     font-weight: bold;
     background: var(--primary-gradient);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; /* Texte effet dégradé */
+    background-clip: text; 
+    -webkit-text-fill-color: transparent;
     text-decoration: none;
 }
 
