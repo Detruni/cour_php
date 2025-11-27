@@ -67,8 +67,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <label>Email :</label><br>
     <input type="email" name="email" required><br><br>
 
-    <label>Adresse :</label><br>
-    <input type="text" name="adresse" required><br><br>
+    <label>Adresse :</label>
+    <div class="address-group">
+        <input type="text" name="adresse" id="addressInput" autocomplete="off" required>
+        <ul id="suggestions"></ul>
+    </div><br>
     
     <label>Mot de passe :</label><br>
     <input type="password" name="password" required><br><br>
@@ -80,5 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <p>Déjà un compte ? <a href="login.php">Se connecter</a></p>
 </form>
+
+<script src="assets/js/script.js" defer></script>
 </body>
 </html>

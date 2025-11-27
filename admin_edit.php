@@ -63,8 +63,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             Email : <br>
             <input type="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required><br><br>
             
-            Adresse : <br>
-            <input type="text" name="adresse" value="<?php echo htmlspecialchars($user['adresse']); ?>" required><br><br>
+            <label>Adresse :</label>
+            <div class="address-group">
+                <input type="text" name="adresse" id="addressInput" value="<?php echo htmlspecialchars($user['adresse']); ?>" autocomplete="off" required>
+                <ul id="suggestions"></ul>
+            </div><br>
             
             Rôle : <br>
             <select name="role">
@@ -76,5 +79,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <a href="admin.php">Annuler</a>
         </form>
     </div>
+    <script src="assets/js/script.js" defer></script>
 </body>
 </html>

@@ -56,7 +56,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form method="POST">
             Nom : <br><input type="text" name="nom" required><br><br>
             Email : <br><input type="email" name="email" required><br><br>
-            Adresse : <br><input type="text" name="adresse" required><br><br>
+            <label>Adresse :</label>
+            <div class="address-group">
+                <input type="text" name="adresse" id="addressInput" autocomplete="off" required>
+                <ul id="suggestions"></ul>
+            </div><br>
             Mot de passe : <br><input type="password" name="password" required><br><br>
             
             Rôle : <br>
@@ -69,5 +73,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <a href="admin.php">Annuler</a>
         </form>
     </div>
+    <script src="assets/js/script.js" defer></script>
 </body>
 </html>
