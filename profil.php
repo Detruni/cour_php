@@ -40,6 +40,8 @@ if (!$user) {
 </head>
 <body>
 
+    <?php require 'header.php'; ?>
+
     <div class="container profile-card">
         
         <div class="profile-avatar">
@@ -86,6 +88,8 @@ if (!$user) {
             
         </div>
     </div>
+
+    <?php require "footer.php"; ?>
 
 </body>
 </html>

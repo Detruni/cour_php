@@ -42,6 +42,9 @@ $users = recupererTousLesUtilisateurs($pdo);
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+
+    <?php require 'header.php'; ?>
+
     <h1>Interface Administrateur</h1>
     <p>Bienvenue, <?php echo htmlspecialchars($_SESSION['user_nom']); ?>.</p>
 
@@ -101,5 +104,8 @@ $users = recupererTousLesUtilisateurs($pdo);
             </tbody>
         </table>
     </div>
+
+    <?php require "footer.php"; ?>
+    
 </body>
 </html>

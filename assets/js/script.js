@@ -50,3 +50,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+
+/* -----------------------------------------------------------
+   Gestion du Menu Burger (Responsive)
+----------------------------------------------------------- */
+document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.querySelector('.burger-menu');
+    const nav = document.querySelector('.nav-links');
+    const navLinks = document.querySelectorAll('.nav-links li');
+
+    if (burger) {
+        burger.addEventListener('click', () => {
+            // 1. Activer le menu (slide in)
+            nav.classList.toggle('nav-active');
+
+            // 2. Animation du bouton burger (Croix)
+            burger.classList.toggle('toggle');
+        });
+    }
+});

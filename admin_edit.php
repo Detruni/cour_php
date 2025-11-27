@@ -51,6 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+
+    <?php require 'header.php'; ?>
+
     <div class="container">
         <h2>Modifier l'utilisateur : <?php echo htmlspecialchars($user['nom']); ?></h2>
         
@@ -79,6 +82,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <a href="admin.php">Annuler</a>
         </form>
     </div>
+
+    <?php require "footer.php"; ?>
+
     <script src="assets/js/script.js" defer></script>
 </body>
 </html>
