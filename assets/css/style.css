@@ -283,29 +283,27 @@ a.btn-green {
 /* -----------------------------------------------------------
    6. AUTOCOMPLÉTION ADRESSE (BAN)
 ----------------------------------------------------------- */
-/* Conteneur pour positionner la liste relative à l'input */
+
 .address-group {
     position: relative;
     width: 100%;
 }
 
-/* La liste des suggestions */
 #suggestions {
     position: absolute;
-    top: 100%; /* Juste en dessous du champ */
+    top: 100%;
     left: 0;
     width: 100%;
-    background-color: var(--card-bg); /* Fond sombre */
+    background-color: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 0 0 6px 6px;
     list-style: none;
-    z-index: 1000; /* Passe par-dessus le reste */
+    z-index: 1000;
     max-height: 200px;
-    overflow-y: auto; /* Scroll si trop de résultats */
+    overflow-y: auto;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
 }
 
-/* Les éléments de la liste */
 #suggestions li {
     padding: 10px 15px;
     cursor: pointer;
@@ -320,7 +318,7 @@ a.btn-green {
 }
 
 #suggestions li:hover {
-    background: var(--primary-gradient); /* Survol violet/rose */
+    background: var(--primary-gradient);
     color: white;
 }
 
@@ -332,7 +330,7 @@ header {
     background-color: var(--card-bg);
     border-bottom: 1px solid var(--border-color);
     width: 100%;
-    position: fixed; /* Fixe le header en haut */
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 2000;
@@ -359,7 +357,6 @@ header {
     text-decoration: none;
 }
 
-/* Liens de navigation (Desktop) */
 .nav-links {
     display: flex;
     list-style: none;
@@ -375,10 +372,9 @@ header {
 
 .nav-links a:hover, 
 .nav-links a.active {
-    color: #f72585; /* Rose au survol */
+    color: #f72585;
 }
 
-/* Le bouton Burger (Caché sur PC) */
 .burger-menu {
     display: none;
     cursor: pointer;
@@ -394,9 +390,8 @@ header {
     transition: 0.3s;
 }
 
-/* Footer style */
 footer {
-    margin-top: auto; /* Pousse le footer tout en bas */
+    margin-top: auto;
     padding: 20px;
     text-align: center;
     color: var(--text-muted);
@@ -463,11 +458,10 @@ footer {
         display: flex;
     }
 
-    /* On cache le menu normal et on le prépare pour le mobile */
     .nav-links {
         position: absolute;
-        top: 60px; /* Juste sous le header */
-        right: -100%; /* Caché hors de l'écran à droite */
+        top: 60px;
+        right: -100%;
         width: 100%;
         height: calc(100vh - 60px);
         background-color: var(--bg-color);
@@ -478,7 +472,6 @@ footer {
         border-top: 1px solid var(--border-color);
     }
 
-    /* Quand on ajoute la classe 'nav-active' via JS, le menu glisse */
     .nav-links.nav-active {
         right: 0;
     }
@@ -488,10 +481,9 @@ footer {
     }
     
     .nav-links a {
-        font-size: 1.5rem; /* Plus gros sur mobile */
+        font-size: 1.5rem;
     }
 
-    /* Animation du burger en croix (Optionnel mais stylé) */
     .burger-menu.toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
     .burger-menu.toggle .line2 { opacity: 0; }
     .burger-menu.toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
